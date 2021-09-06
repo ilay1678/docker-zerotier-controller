@@ -59,7 +59,7 @@ RUN apk update && \
     apk add libpq postgresql-dev postgresql jq curl bash wget && \
     mkdir -p /var/lib/zerotier-one/ && \
     ln -s /app/config/authtoken.secret /var/lib/zerotier-one/authtoken.secret
-
+    ln -s /var/lib/zerotier-one/controller.d /app/config/controller.d
 # Installing s6-overlay
 RUN S6_OVERLAY_VERSION=`curl --silent "https://api.github.com/repos/just-containers/s6-overlay/releases/latest" | jq -r .tag_name` && \
     wget https://github.com/just-containers/s6-overlay/releases/download/${S6_OVERLAY_VERSION}/s6-overlay-amd64.tar.gz -O /tmp/s6-overlay-amd64.tar.gz && \
